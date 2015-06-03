@@ -20,6 +20,11 @@ output name.)
 > sleep
 Usage: sleep <count>
 Sleep for <count> milliseconds.
+> time sleep 100
+
+real    0m0.104s
+user    0m0.000s
+sys     0m0.007s
 ```
 
 ### License
