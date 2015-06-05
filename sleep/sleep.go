@@ -4,25 +4,24 @@ import (
 	"fmt"
 	"os"
 	"time"
-
-	"github.com/dustin/go-humanize"
 )
 
 func main() {
 	if len(os.Args) != 2 {
 		usageError()
 	}
-
-	count, err := humanize.ParseBytes(os.Args[1])
+	d, err := time.ParseDuration(os.Args[1])
 	if err != nil {
+		fmt.Fprintf(os.Stderr, "could not parse duration: %s\n", err)
 		usageError()
 	}
 
-	time.Sleep(time.Duration(count) * time.Millisecond)
+	time.Sleep(d)
 }
 
 func usageError() {
-	fmt.Fprintf(os.Stderr, "Usage: %s <count>\n", os.Args[0])
-	fmt.Fprintf(os.Stderr, "Sleep for <count> milliseconds.")
+	fmt.Fprintf(os.Stderr, "Usage: %s <duration>\n", os.Args[0])
+	fmt.Fprintln(os.Stderr, `Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".`)
+	fmt.Fprintf(os.Stderr, "See https://godoc.org/time#ParseDuration for more.")
 	os.Exit(-1)
 }
