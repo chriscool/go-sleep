@@ -1,8 +1,11 @@
-# go-sleep sleeps for some milliseconds
+# go-sleep sleeps for some duration
 
 This unix tool is a thin wrapper around `time.Sleep()`.
-It aims to provide a portable way to sleep for a number of
-milliseconds.
+It aims to provide a portable way to sleep for an amount of time that
+need not to be a number of seconds.
+
+See https://godoc.org/time#ParseDuration for how the duration can be
+specified.
 
 ### Install
 
@@ -18,9 +21,10 @@ output name.)
 
 ```
 > sleep
-Usage: sleep <count>
-Sleep for <count> milliseconds.
-> time sleep 100
+Usage: sleep <duration>
+Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
+See https://godoc.org/time#ParseDuration for more.
+> time sleep 100ms
 
 real    0m0.104s
 user    0m0.000s
