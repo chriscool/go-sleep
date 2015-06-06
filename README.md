@@ -10,21 +10,17 @@ specified.
 ### Install
 
 ```sh
-go install github.com/chriscool/go-sleep/sleep
+go install github.com/chriscool/go-sleep
 ```
-
-(The extra /sleep is there because go get is stupidly too proscriptive about
-package/repository names and I don't yet know how to change the default binary
-output name.)
 
 ### Usage:
 
 ```
-> sleep
-Usage: sleep <duration>
+> go-sleep
+Usage: go-sleep <duration>
 Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
 See https://godoc.org/time#ParseDuration for more.
-> time sleep 100ms
+> time go-sleep 100ms
 
 real    0m0.104s
 user    0m0.000s
